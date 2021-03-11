@@ -1,3 +1,4 @@
+dupa
 #include <iostream>
 #include <stdlib.h>
 #include "RandomNumberGenerator.h"
