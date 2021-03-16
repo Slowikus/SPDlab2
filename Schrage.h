@@ -11,7 +11,11 @@
 
 
 class Schrage {
-    std::list<int> r
+private:
+     // czas przygotowania
+     // czas wykonania
+     // czas dostarczenia/stygniecia
+public:
 
 
 };
