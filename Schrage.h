@@ -44,7 +44,17 @@ public:
 
         time += g[0].r;
 
-
+        while(!g.empty() || !data.empty()) {
+            while (!data.empty() && data[0].r <= time) {
+                g.push_back(data[0]);
+                data.erase(data.begin());
+            }
+            if(g.empty()){
+                time = data[0].r;
+            } else {
+                pi[count] =
+            }
+        }
 
 
 
