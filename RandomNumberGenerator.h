@@ -81,7 +81,29 @@ public:
         }
         std::cout << "]" << std::endl;
     }
-    void seedAndSize () {
+    static void print(std::vector<Data> data,int size) {
+        std::cout << "j: [ ";
+        for (int i = 0; i < size; ++i) {
+            std::cout << data[i].j << " ";
+        }
+        std::cout << "]" <<std::endl;
+        std::cout << "r: [ ";
+        for (int i = 0; i < size; ++i) {
+            std::cout << data[i].r << " ";
+        }
+        std::cout << "]" << std::endl;
+        std::cout << "p: [ ";
+        for (int i = 0; i < size; ++i) {
+            std::cout << data[i].p << " ";
+        }
+        std::cout << "]" << std::endl;
+        std::cout << "q: [ ";
+        for (int i = 0; i < size; ++i) {
+            std::cout << data[i].q << " ";
+        }
+        std::cout << "]" << std::endl;
+    }
+    void setSeedAndSize () {
         std::cout << "Podaj seed: ";
         std::cin >> seed;
         std::cout << std::endl;
@@ -90,7 +112,7 @@ public:
         std::cout << std::endl;
 
     }
-    std::vector<Data> getData (){
+    std::vector<Data> get (){
         return data;
     }
 };

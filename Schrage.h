@@ -12,9 +12,7 @@
 
 class Schrage {
 private:
-     // czas przygotowania
-     // czas wykonania
-     // czas dostarczenia/stygniecia
+
 public:
 
 
