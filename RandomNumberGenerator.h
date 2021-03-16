@@ -12,6 +12,7 @@ private:
     std::vector<Data> data;
 
 public:
+    //konstruktor
     RandomNumberGenerator(long seedValue, int size) {
         this->size = size;
         this->seed = seedValue;
@@ -39,6 +40,7 @@ public:
         float val = nextInt(low, high) / 100000.0;
         return val;
     }
+    //tworzy dane o zadanych wielkościach
     void create() {
         seed = 1;
         size  = 10;
@@ -59,6 +61,7 @@ public:
             data[i].q = nextInt(1,sum);
         }
     }
+    //wyświetla zawartość stworzonej instancji
     void print() {
         std::cout << "j: [ ";
         for (int i = 0; i < size; ++i) {
@@ -81,28 +84,30 @@ public:
         }
         std::cout << "]" << std::endl;
     }
-    static void print(std::vector<Data> data,int size) {
+    //wyswietla zawartosc wskazanego wektora danych
+    static void print(std::vector<Data> data) {
         std::cout << "j: [ ";
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < data.size(); ++i) {
             std::cout << data[i].j << " ";
         }
         std::cout << "]" <<std::endl;
         std::cout << "r: [ ";
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < data.size(); ++i) {
             std::cout << data[i].r << " ";
         }
         std::cout << "]" << std::endl;
         std::cout << "p: [ ";
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < data.size(); ++i) {
             std::cout << data[i].p << " ";
         }
         std::cout << "]" << std::endl;
         std::cout << "q: [ ";
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < data.size(); ++i) {
             std::cout << data[i].q << " ";
         }
         std::cout << "]" << std::endl;
     }
+    //ustal wielkosc oraz seed
     void setSeedAndSize () {
         std::cout << "Podaj seed: ";
         std::cin >> seed;
@@ -112,6 +117,7 @@ public:
         std::cout << std::endl;
 
     }
+    //przekazanie wektora danych
     std::vector<Data> get (){
         return data;
     }

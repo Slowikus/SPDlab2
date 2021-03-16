@@ -24,9 +24,9 @@ int main() {
     std::sort(test.begin(), test.end(), compareP);
     std::cout << test[1].j << std::endl;
     //test usuwania elementów
-    data.print(test, 10);
+    data.print(test);
     test.erase(test.begin()+2);
-    data.print(test, test.size());
+    data.print(test);
 
     return 0;
 }
