@@ -41,7 +41,7 @@ public:
         time += data[0].r;
 
 
-        //std::cout << "DUPA" << std::endl;
+
         while(!g.empty() || !data.empty()) {
             while (!data.empty() && data[0].r <= time) {
 
@@ -52,9 +52,9 @@ public:
 
                 std::sort(g.begin(), g.end(), compareQ);
                 pi.push_back(g[0]);
+                time += g[0].p;
                 cmax = fmax(cmax, time+g[0].q);
                 g.erase(g.begin());
-                time += pi[0].p;
 
             } else {
 
