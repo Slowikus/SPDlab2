@@ -42,8 +42,8 @@ public:
     }
     //tworzy dane o zadanych wielkościach
     void create() {
-        seed = 1;
-        size  = 10;
+        //seed = 1;
+        //size  = 10;
         long sum = 0;
         long sum2 = 0;
         for (int i = 0; i < size; ++i) {
@@ -63,6 +63,7 @@ public:
     }
     //wyświetla zawartość stworzonej instancji
     void print() {
+        std::cout << "//////////////////////////////////" <<std::endl;
         std::cout << "j: [ ";
         for (int i = 0; i < size; ++i) {
             std::cout << data[i].j << " ";
@@ -83,9 +84,11 @@ public:
             std::cout << data[i].q << " ";
         }
         std::cout << "]" << std::endl;
+        std::cout << "//////////////////////////////////" <<std::endl;
     }
     //wyswietla zawartosc wskazanego wektora danych
     static void print(std::vector<Data> data) {
+        std::cout << "//////////////////////////////////" <<std::endl;
         std::cout << "j: [ ";
         for (int i = 0; i < data.size(); ++i) {
             std::cout << data[i].j << " ";
@@ -106,6 +109,7 @@ public:
             std::cout << data[i].q << " ";
         }
         std::cout << "]" << std::endl;
+        std::cout << "//////////////////////////////////" <<std::endl;
     }
     //ustal wielkosc oraz seed
     void setSeedAndSize () {

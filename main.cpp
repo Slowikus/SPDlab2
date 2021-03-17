@@ -15,24 +15,25 @@ bool compareQ(const Data &a, const Data &b){
 }
 
 int main() {
-    RandomNumberGenerator data;
+    RandomNumberGenerator data(1,10);
     //data.setSeedAndSize();
     data.create();
-    //data.print();
+    data.print();
     Schrage metoda;
 
     data.print(metoda.schrage(data.get()));
 
 
 
-//    //test wyswietlania elementow
+    //test wyswietlania elementow
 //    std::vector<Data> test = data.get();
-//    std::sort(test.begin(), test.end(), compareP);
-//    std::cout << test[1].j << std::endl;
-//    //test usuwania elementów
+    //std::sort(test.begin(), test.end(), compareP);
+    //std::cout << test[1].j << std::endl;
+    //test usuwania elementów
+    //data.print(test);
+//    test.erase(test.begin());
 //    data.print(test);
-//    test.erase(test.begin()+2);
-//    data.print(test);
+//    std::cout << test[0].j << std::endl;
 
     return 0;
 }
