@@ -14,7 +14,7 @@
 #ifndef LAB2_SCHRAGE_H
 #define LAB2_SCHRAGE_H
 
-
+//klasa zawierająca implementacje algorytmu Schrage.
 class Schrage {
 private:
 
@@ -29,7 +29,8 @@ public:
         return a.q > b.q;
     }
 
-
+    //funkcja przyjmująca wektor procesów i szeregująca go w optymalny sposób algorytmrm
+    //Schrage. Zwraca wektor procesów w optymalnej koljenosci.
     std::vector<Data> schrage(std::vector<Data> data) {
         long time =0;
         int cmax = 0;
@@ -64,7 +65,7 @@ public:
         std::cout << cmax << std::endl;
         return pi;
 }
-
+    //algorytm schrage z przerwaniami, nic nie zwraca, wypisuje kolejnosc
     void schrageZPrzerwaniami(std::vector<Data> data) {
         long time =0;
         int cmax = 0;
@@ -78,7 +79,7 @@ public:
 
         time += data[0].r;
 
-
+        std::cout <<"Kolejnosc wykonania procesow: [ ";
 
         while(!g.empty() || !data.empty()) {
             while (!data.empty() && data[0].r <= time) {
@@ -88,11 +89,11 @@ public:
             }
             if (!g.empty()) {
                 //wypisuję numer kolejnego zadania do wykonania
-                std::cout << g.top().j << std::endl;
+                std::cout << g.top().j << " ";
                 time += g.top().p;
                 Data h = g.top();
                 g.pop();
-
+                //////////////////////////////////////////////////////////// dodatek do przerwan
                 while (!data.empty() && data[0].r <= time) {
                     g.push(data[0]);
                     data.erase(data.begin());
@@ -106,6 +107,7 @@ public:
                     } else {
                         cmax = fmax(cmax, time + (h.q));
                     }
+                /////////////////////////////////////////////////////////////
                 } else {
                     cmax = fmax(cmax, time + (h.q));
                 }
@@ -114,6 +116,7 @@ public:
                 time = data[0].r;
             }
         }
+        std::cout <<" ]" << std::endl;
         std::cout <<"Cmax: " << cmax << std::endl;
 
     }

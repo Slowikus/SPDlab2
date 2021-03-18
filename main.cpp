@@ -5,7 +5,7 @@
 #include "Schrage.h"
 
 int main() {
-    RandomNumberGenerator data(1451,10);
+    RandomNumberGenerator data(1,6);
     //data.setSeedAndSize();
     data.create();
     data.print();
