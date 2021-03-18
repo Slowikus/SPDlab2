@@ -3,8 +3,10 @@
 //
 #include <algorithm>
 #include <iostream>
+#include <cstdlib>
 #include <list>
 #include <vector>
+#include <queue>
 #include "Data.h"
 #include "RandomNumberGenerator.h"
 
@@ -27,6 +29,7 @@ public:
         return a.q > b.q;
     }
 
+
     std::vector<Data> schrage(std::vector<Data> data) {
         long time =0;
         int cmax = 0;
@@ -35,6 +38,7 @@ public:
         std::sort(data.begin(), data.end(), compareR);
         //wektor g
         std::vector<Data> g;
+        //
         //wektor wyjsciowy, optymlan kolejnosc
         std::vector<Data> pi;
 
@@ -60,16 +64,17 @@ public:
         std::cout << cmax << std::endl;
         return pi;
 }
-    std::vector<Data> schrageZPrzerwaniami(std::vector<Data> data) {
+
+    void schrageZPrzerwaniami(std::vector<Data> data) {
         long time =0;
         int cmax = 0;
 
         //sortuję po czasie przygotowania
         std::sort(data.begin(), data.end(), compareR);
-        //wektor g
-        std::vector<Data> g;
+        //kolejka g
+        std::priority_queue<Data, std::vector<Data>, compareQforQueue> g;
         //wektor wyjsciowy, optymlan kolejnosc
-        std::vector<Data> pi;
+
 
         time += data[0].r;
 
@@ -77,23 +82,41 @@ public:
 
         while(!g.empty() || !data.empty()) {
             while (!data.empty() && data[0].r <= time) {
-                g.push_back(data[0]);
+                g.push(data[0]);
                 data.erase(data.begin());
+
             }
             if (!g.empty()) {
-                std::sort(g.begin(), g.end(), compareQ);
-                pi.push_back(g[0]);
-                time += g[0].p;
-                cmax = fmax(cmax, time+g[0].q);
-                g.erase(g.begin());
+                //wypisuję numer kolejnego zadania do wykonania
+                std::cout << g.top().j << std::endl;
+                time += g.top().p;
+                Data h = g.top();
+                g.pop();
+
+                while (!data.empty() && data[0].r <= time) {
+                    g.push(data[0]);
+                    data.erase(data.begin());
+                }
+                if (!g.empty()) {
+                    if (g.top().q > h.q) {
+                       // std::cout << g.top().j << std::endl;
+                        h.p = time - g.top().r;
+                        time -= h.p;
+                        g.push(h);
+                    } else {
+                        cmax = fmax(cmax, time + (h.q));
+                    }
+                } else {
+                    cmax = fmax(cmax, time + (h.q));
+                }
+
             } else {
                 time = data[0].r;
             }
         }
-        std::cout << cmax << std::endl;
-        return pi;
-    }
+        std::cout <<"Cmax: " << cmax << std::endl;
 
+    }
 
 };
 
