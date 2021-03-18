@@ -44,27 +44,55 @@ public:
 
         while(!g.empty() || !data.empty()) {
             while (!data.empty() && data[0].r <= time) {
-
                 g.push_back(data[0]);
                 data.erase(data.begin());
             }
             if (!g.empty()) {
-
                 std::sort(g.begin(), g.end(), compareQ);
                 pi.push_back(g[0]);
                 time += g[0].p;
                 cmax = fmax(cmax, time+g[0].q);
                 g.erase(g.begin());
-
             } else {
-
                 time = data[0].r;
             }
-
         }
         std::cout << cmax << std::endl;
         return pi;
 }
+    std::vector<Data> schrageZPrzerwaniami(std::vector<Data> data) {
+        long time =0;
+        int cmax = 0;
+
+        //sortuję po czasie przygotowania
+        std::sort(data.begin(), data.end(), compareR);
+        //wektor g
+        std::vector<Data> g;
+        //wektor wyjsciowy, optymlan kolejnosc
+        std::vector<Data> pi;
+
+        time += data[0].r;
+
+
+
+        while(!g.empty() || !data.empty()) {
+            while (!data.empty() && data[0].r <= time) {
+                g.push_back(data[0]);
+                data.erase(data.begin());
+            }
+            if (!g.empty()) {
+                std::sort(g.begin(), g.end(), compareQ);
+                pi.push_back(g[0]);
+                time += g[0].p;
+                cmax = fmax(cmax, time+g[0].q);
+                g.erase(g.begin());
+            } else {
+                time = data[0].r;
+            }
+        }
+        std::cout << cmax << std::endl;
+        return pi;
+    }
 
 
 };
