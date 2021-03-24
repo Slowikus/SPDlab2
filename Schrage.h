@@ -15,7 +15,7 @@
 #define LAB2_SCHRAGE_H
 
 //klasa zawierająca implementacje algorytmu Schrage.
-class Schrage {
+ class Schrage {
 private:
 
 public:
@@ -31,7 +31,7 @@ public:
 
     //funkcja przyjmująca wektor procesów i szeregująca go w optymalny sposób algorytmrm
     //Schrage. Zwraca wektor procesów w optymalnej koljenosci.
-    std::vector<Data> schrage(std::vector<Data> data) {
+    static std::vector<Data> schrage(std::vector<Data> data) {
         long time =0;
         int cmax = 0;
 
@@ -62,11 +62,11 @@ public:
                 time = data[0].r;
             }
         }
-        std::cout << cmax << std::endl;
+        //std::cout << cmax << std::endl;
         return pi;
 }
     //algorytm schrage z przerwaniami, nic nie zwraca, wypisuje kolejnosc
-    void schrageZPrzerwaniami(std::vector<Data> data) {
+    static void schrageZPrzerwaniami(std::vector<Data> data) {
         long time =0;
         int cmax = 0;
 
